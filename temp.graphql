@@ -1,0 +1,67 @@
+mutation CreateUserMutation($name: String!, $email: String!, $password: String!, $date: String, $token: String!) {
+  createUser(userInput: {name: $name, email: $email, password: $password, date: $date, token: $token}) {
+    _id
+    name
+    email
+    avatar
+    date
+  }
+}
+
+{
+  "name": "qwerty",
+  "email": "qwerty@gmail.com",
+  "password": "qwerty123",
+  "date": "2019-11-07T03:39:43.117Z",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1NzNmOWNiZjMwYzQxZGNiMGE4NWMyIn0sImlhdCI6MTYwMDI1NDc1NCwiZXhwIjoxNjAwNjE0NzU0fQ.XdvLnrBFUSbxMm1YWiZfRAuZDIpGIkRG7M4O0oEUlHY"
+}
+
+query {
+  users {
+    _id
+    name
+    email
+    avatar
+    date
+  }
+}
+
+mutation UpdateUserMutation($id: ID!, $name: String!, $email: String!, $password: String!, $token: String!) {
+  updateUser(userUpdate: {_id: $id, name: $name, email: $email, password: $password, token: $token}) {
+    _id
+    name
+    email
+  }
+}
+
+{
+  "_id": "5f61eaac45fdbc2d9ffad7f9",
+  "name": "qwerty",
+  "email": "qwerty@gmail.com",
+  "password": "qwerty123",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1NzNmOWNiZjMwYzQxZGNiMGE4NWMyIn0sImlhdCI6MTYwMDI1MzcwNCwiZXhwIjoxNjAwNjEzNzA0fQ.RcXKWpO3IhdMGXdHxBZocJkA9si0RKLDN-ra6DKz1Cc"
+}
+
+mutation RemoveUserMutation($id: ID!, $token: String!) {
+  deleteUser(userRemove: {_id: $id, token: $token}) {
+    _id
+    name
+    email
+  }
+}
+
+{
+  "id": "5f61eabb45fdbc2d9ffad7fd",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1NzNmOWNiZjMwYzQxZGNiMGE4NWMyIn0sImlhdCI6MTYwMDI1MjY5NCwiZXhwIjoxNjAwNjEyNjk0fQ.IprwACLsh--gHIhHuH1e8joqUjnXH5u67AMZwjUl4g8"
+}
+
+mutation LoginUserMutation($email: String!, $password: String!) {
+  authUser(userAuth: {email: $email, password: $password}) {
+    token
+  }
+}
+
+{
+  "email": "qwerty@gmail.com",
+  "password": "qwerty123"
+}
